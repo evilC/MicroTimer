@@ -17,6 +17,11 @@ public class MicroTimer
 {
     public Timer Create(dynamic handler, int ms, bool fireImmediately = false)
     {
+        return new Timer(handler, ms * 1000, fireImmediately);
+    }
+
+    public Timer CreateMicro(dynamic handler, int ms, bool fireImmediately = false)
+    {
         return new Timer(handler, ms, fireImmediately);
     }
 
@@ -28,19 +33,19 @@ public class MicroTimer
         private dynamic Callback;
         private MicroLibrary.MicroTimer microTimer = new MicroLibrary.MicroTimer();
 
-        public Timer(dynamic handler, int ms, bool fireImmediately = false)
+        public Timer(dynamic handler, int microSeconds, bool fireImmediately = false)
         {
             microTimer.MicroTimerElapsed +=
                 new MicroLibrary.MicroTimer.MicroTimerElapsedEventHandler(OnTimedEvent);
 
             Callback = handler;
 
-            if (ms < 0)
+            if (microSeconds < 0)
             {
                 singleTick = true;
-                ms = Math.Abs(ms);
+                microSeconds = Math.Abs(microSeconds);
             }
-            tickTime = ms * 1000;
+            tickTime = microSeconds;
             microTimer.Interval = tickTime; // Convert from ms to µs
 
             // Can choose to ignore event if late by Xµs (by default will try to catch up)

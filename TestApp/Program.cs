@@ -13,7 +13,7 @@ namespace TestApp
             var handler1 = new Action(() => { Console.WriteLine("HERE"); });
 
             var mt = new MicroTimer();
-            var timer = mt.Create(handler1, 1);
+            var timer = mt.CreateMicro(handler1, 500);
             timer.Start();
 
         }
