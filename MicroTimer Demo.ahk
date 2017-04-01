@@ -61,8 +61,7 @@ YEvent(evt){
 
 up up::
 down up::
-	YState := 0
-	YTimer.SetState(0)
+	YEvent(0)
 	return
 
 ^Esc::
