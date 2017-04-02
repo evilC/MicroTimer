@@ -1,5 +1,5 @@
 # MicroTimer
-A DLL Wrapper for Ken Loveday's MicroLibrary, with AutoHotkey interop demo
+A DLL Wrapper for [Ken Loveday's MicroLibrary](https://www.codeproject.com/Articles/98346/Microsecond-and-Millisecond-NET-Timer), with AutoHotkey interop demo
 
 ## Usage in AHK
 Instantiate the MicroTimer class from the DLL  
