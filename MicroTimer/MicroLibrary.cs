@@ -181,11 +181,18 @@ namespace MicroLibrary
                 timerCount++;
                 long elapsedMicroseconds = 0;
 
-                while ( (elapsedMicroseconds = microStopwatch.ElapsedMicroseconds)
-                        < nextNotification)
-                {
+                // https://www.codeproject.com/Articles/98346/Microsecond-and-Millisecond-NET-Timer?msg=5288003#xx5288003xx
+                //while ( (elapsedMicroseconds = microStopwatch.ElapsedMicroseconds)
+                //        < nextNotification)
+                //{
+                //    System.Threading.Thread.SpinWait(10);
+                //}
+                int wms = (int)timerIntervalInMicroSec / 1000;
+                wms = wms - (int)(wms * 0.01);
+                _threadTimer.Join(wms);
+                while ((elapsedMicroseconds = microStopwatch.ElapsedMicroseconds) < nextNotification)
                     System.Threading.Thread.SpinWait(10);
-                }
+
 
                 long timerLateBy = elapsedMicroseconds - nextNotification;
 
