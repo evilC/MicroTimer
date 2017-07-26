@@ -10,7 +10,7 @@ Converts Arrow Keys to mouse cursor, with 1ms move time for the mouse
 
 #SingleInstance force
 
-dllfile := "MicroTimer\MicroTimer.dll"
+dllfile := "MicroTimer.dll"
 
 if (!FileExist(dllfile)){
 	MsgBox DLL Not found
